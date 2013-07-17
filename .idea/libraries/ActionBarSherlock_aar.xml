@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="ActionBarSherlock.aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/NightLamp/build/exploded-bundles/ActionBarSherlock.aar/classes.jar!/" />
+      <root url="jar://$PROJECT_DIR$/NightLamp/build/exploded-bundles/ActionBarSherlock.aar/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
