@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- File created by the Android Action Bar Style Generator
+
+     Copyright (C) 2011 The Android Open Source Project
+     Copyright (C) 2012 readyState Software Ltd
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+
+    <style name="Theme.App" parent="@style/Theme.Sherlock.Light.DarkActionBar">
+        <item name="actionBarItemBackground">@drawable/selectable_background_app</item>
+        <item name="popupMenuStyle">@style/PopupMenu.App</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.App</item>
+        <item name="actionBarTabStyle">@style/ActionBarTabStyle.App</item>
+        <item name="actionDropDownStyle">@style/DropDownNav.App</item>
+        <item name="actionBarStyle">@style/ActionBar.Solid.App</item>
+        <item name="actionModeBackground">@drawable/cab_background_top_app</item>
+        <item name="actionModeSplitBackground">@drawable/cab_background_bottom_app</item>
+        <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.App</item>
+
+                <!-- Light.DarkActionBar specific -->
+        <item name="actionBarWidgetTheme">@style/Theme.App.Widget</item>
+
+    </style>
+
+    <style name="ActionBar.Solid.App" parent="@style/Widget.Sherlock.Light.ActionBar.Solid.Inverse">
+        <item name="background">@drawable/ab_solid_app</item>
+        <item name="backgroundStacked">@drawable/ab_stacked_solid_app</item>
+        <item name="backgroundSplit">@drawable/ab_bottom_solid_app</item>
+        <item name="progressBarStyle">@style/ProgressBar.App</item>
+    </style>
+
+    <style name="ActionBar.Transparent.App" parent="@style/Widget.Sherlock.ActionBar">
+        <item name="background">@drawable/ab_transparent_app</item>
+        <item name="progressBarStyle">@style/ProgressBar.App</item>
+    </style>
+	
+    <style name="PopupMenu.App" parent="@style/Widget.Sherlock.ListPopupWindow">	
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_app</item>	
+    </style>
+	
+    <style name="DropDownListView.App" parent="@style/Widget.Sherlock.ListView.DropDown">
+        <item name="android:listSelector">@drawable/selectable_background_app</item>
+    </style>
+
+    <style name="ActionBarTabStyle.App" parent="@style/Widget.Sherlock.ActionBar.TabView">
+        <item name="android:background">@drawable/tab_indicator_ab_app</item>
+    </style>
+	
+    <style name="DropDownNav.App" parent="@style/Widget.Sherlock.Spinner.DropDown.ActionBar">
+        <item name="android:background">@drawable/spinner_background_ab_app</item>
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_app</item>
+        <item name="android:dropDownSelector">@drawable/selectable_background_app</item>
+    </style>
+    
+    <style name="ProgressBar.App" parent="@style/Widget.Sherlock.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_horizontal_app</item>
+    </style>
+    
+    <style name="ActionButton.CloseMode.App" parent="@style/Widget.Sherlock.ActionButton.CloseMode">
+        <item name="android:background">@drawable/btn_cab_done_app</item>
+    </style>
+    
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.App.Widget" parent="@style/Theme.Sherlock">
+        <item name="popupMenuStyle">@style/PopupMenu.App</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.App</item>
+    </style>
+
+</resources>

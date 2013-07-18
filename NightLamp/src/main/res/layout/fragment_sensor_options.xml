@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_card"
+            android:layout_margin="15dp"
+            android:padding="5dp">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:padding="5dp">
+
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/light_sensor_check_box"
+                    android:id="@+id/lightSensorCheckBox"
+                    android:layout_gravity="center"/>
+
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/light_sensor_description"
+                    android:fontFamily="sans-serif-light"
+                    android:id="@+id/textView2"
+                    android:textColor="@color/gray"
+                    android:gravity="center_horizontal"/>
+
+            <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lightSensorSpinner"
+                    android:layout_gravity="center"/>
+
+        </LinearLayout>
+        <TextView
+                android:id="@+id/line"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_horizontal"
+                android:paddingTop="5dip"
+                android:textStyle="bold" />
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:id="@+id/accel_container"
+                android:padding="5dp">
+
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accel_sensor_check_box"
+                    android:id="@+id/accelSensorCheckBox"
+                    android:layout_gravity="center"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shake_phone"
+                    android:id="@+id/textView"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@color/gray"
+                    android:layout_gravity="center"/>
+
+            <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/accelSensorSpinner"
+                    android:layout_gravity="center"/>
+        </LinearLayout>
+        <TextView
+                android:id="@+id/line"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_horizontal"
+                android:paddingTop="5dip"
+                android:textStyle="bold" />
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/bkgcolorContainer"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:gravity="center_horizontal">
+
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/voice_recog_check_box"
+                    android:id="@+id/voiceCheckBox"
+                    android:layout_gravity="center"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/voice_recog_hot_word"
+                    android:id="@+id/textView"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@color/gray"
+                    android:layout_gravity="center"/>
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/voiceRecogEditText"
+                    android:layout_gravity="center"
+                    android:hint="Hotword"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

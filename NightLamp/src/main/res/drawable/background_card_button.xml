@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true"
+          android:drawable="@drawable/background_card_activated" /> <!-- pressed -->
+    <item android:state_focused="true"
+          android:drawable="@drawable/background_card_activated" /> <!-- focused -->
+    <item android:state_enabled="false"
+          android:drawable="@drawable/background_card_disabled" /> <!-- disabled -->
+    <item android:drawable="@drawable/background_card" /> <!-- default -->
+</selector>

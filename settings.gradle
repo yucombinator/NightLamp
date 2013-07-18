@@ -1,0 +1,3 @@
+include ':NightLamp'
+include ':ActionBarSherlock'
+include ':HoloColorPicker'

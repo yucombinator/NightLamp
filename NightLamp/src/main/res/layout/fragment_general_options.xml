@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@null">
+    <LinearLayout
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="@drawable/background_card"
+                  android:layout_margin="15dp"
+                  android:padding="5dp">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:padding="5dp">
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/light_fade_out"
+                android:id="@+id/autoFadeCheckBox"
+                android:layout_gravity="center"/>
+        <!-- Dummy item to prevent EditText from receiving focus -->
+        <LinearLayout
+                android:focusable="true" android:focusableInTouchMode="true"
+                android:layout_width="0px" android:layout_height="0px"/>
+
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/autoFadeeditText"
+                android:layout_gravity="center"
+                />
+    </LinearLayout>
+        <TextView
+                android:id="@+id/line"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_horizontal"
+                android:paddingTop="5dip"
+                android:textStyle="bold" />
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:id="@+id/flipCheckBoxContainer"
+            android:padding="5dp">
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/flip_checkbox"
+                android:id="@+id/flipCheckBox"
+                android:layout_gravity="center"/>
+    </LinearLayout>
+        <TextView
+                android:id="@+id/line"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_horizontal"
+                android:paddingTop="5dip"
+                android:textStyle="bold" />
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bkgcolorContainer"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:gravity="center_horizontal">
+
+        <FrameLayout
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:id="@+id/bkgcolorView">
+        </FrameLayout>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bkg_color"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"/>
+
+    </LinearLayout>
+        <TextView
+                android:id="@+id/line"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_horizontal"
+                android:paddingTop="5dip"
+                android:textStyle="bold" />
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/clockColorContainer"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:gravity="center_horizontal">
+        <FrameLayout
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:id="@+id/clockColorView">
+        </FrameLayout>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/clock_color"
+                android:gravity="center_horizontal"
+                android:padding="5dp"/>
+    </LinearLayout>
+        <TextView
+                android:id="@+id/line"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_horizontal"
+                android:paddingTop="5dip"
+                android:textStyle="bold" />
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dimClockColorContainer"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:gravity="center_horizontal">
+        <FrameLayout
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:id="@+id/dimClockColorView">
+        </FrameLayout>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/clock_color_dim"
+                android:gravity="center_horizontal"
+                android:padding="10dp"/>
+    </LinearLayout>
+    </LinearLayout>
+</ScrollView>

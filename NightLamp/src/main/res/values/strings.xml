@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NightLamp</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_front_lamp">FrontLampActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="action_start">Start</string><string name="action_reset">Reset defaults</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string><string name="checkbox_touch">Touch screen to toggle lamp</string><string name="light_fade_out">Light fade out</string><string name="light_fade_out_editable_hint">Fade out after... (minutes)</string><string name="flip_checkbox">Flip phone to toggle flashlight</string><string name="bkg_color">Background color</string><string name="clock_color">Clock Color</string><string name="clock_color_dim">Dim Clock Color</string><string name="light_sensor_check_box">Light Sensor</string><string name="accel_sensor_check_box">Acceleration sensor</string><string name="shake_phone">Shake phone to toggle light</string><string name="light_sensor_description">Turn on/off lamp based on light level</string><string name="voice_recog_check_box">Voice recognition</string><string name="voice_recog_hot_word">Trigger light from hot words</string>
+
+    <array name="sensitivity">
+        <item>High sensitivity</item>
+        <item>Normal sensitivity</item>
+        <item>Low sensitivity</item>
+    </array>
+
+</resources>
