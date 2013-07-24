@@ -33,6 +33,7 @@ public class MainActivity extends SherlockFragmentActivity {
     reset
     flashlight not starting if flipped too early
     clap sensor!!!
+    hour format
      */
 
     @Override

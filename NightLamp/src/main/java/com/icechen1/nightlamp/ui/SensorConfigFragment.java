@@ -148,6 +148,7 @@ public class SensorConfigFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                if(editable.toString().equals(""))return;
                 pref.setMicSensorHotwords(editable.toString());
             }
         });

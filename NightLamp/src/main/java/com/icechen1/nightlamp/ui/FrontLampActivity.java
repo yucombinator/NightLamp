@@ -75,7 +75,7 @@ public class FrontLampActivity extends FragmentActivity {
         colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), pref.getClockColorLight(), pref.getClockColorDim());
 
         //This will work also on old devices.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             final TextClock clockView = (TextClock) findViewById(R.id.digitalClock);
             colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
