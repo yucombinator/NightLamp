@@ -114,7 +114,7 @@ public class AppPreferenceManager {
     }
 
     public boolean getMicSensorEnabled(){
-        return settings.getBoolean("microphone_sensor_enabled", true);
+        return settings.getBoolean("microphone_sensor_enabled", false);
     }
 
     public void setMicSensorEnabled(boolean value){
@@ -143,6 +143,14 @@ public class AppPreferenceManager {
 
     public void setMicSensorHotwords(String value){
         edit.putString("hotwords", value).commit();
+    }
+
+    public String getClockSize(){
+        return settings.getString("ClockSize", "normal");
+    }
+
+    public void setClockSize(String value){
+        edit.putString("ClockSize", value).commit();
     }
 
     public void reset(){

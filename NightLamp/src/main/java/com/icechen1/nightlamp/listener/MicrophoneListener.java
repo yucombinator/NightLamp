@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
@@ -76,8 +77,10 @@ public class MicrophoneListener implements RecognitionListener {
      */
     public void startVoiceRecognitionCycle()
     {
-        //mute the beep sound
-        mAudioManager.setStreamMute(AudioManager.STREAM_NOTIFICATION, true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            //mute the beep sound
+            mAudioManager.setStreamMute(AudioManager.STREAM_RING, true);
+        }
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         getSpeechRecognizer().startListening(intent);
@@ -88,7 +91,7 @@ public class MicrophoneListener implements RecognitionListener {
      */
     public void stopVoiceRecognition()
     {
-        mAudioManager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false);
+
         try{
             speechTimeout.cancel();
         }catch(NullPointerException e){
@@ -106,11 +109,13 @@ public class MicrophoneListener implements RecognitionListener {
     @Override
     public void onReadyForSpeech(Bundle params) {
        // Log.i(getClass().getName(), "onReadyForSpeech");
-        //unmute sound
-        mAudioManager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false);
         // create and schedule the input speech timeout
         speechTimeout = new Timer();
         speechTimeout.schedule(new SilenceTimer(), 3000);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            //mute the beep sound
+            mAudioManager.setStreamMute(AudioManager.STREAM_RING, false);
+        }
     }
 
     @Override
@@ -209,6 +214,7 @@ public class MicrophoneListener implements RecognitionListener {
                 }
             }
         }
+
     }
 
     @Override

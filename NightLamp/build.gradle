@@ -9,6 +9,7 @@ buildscript {
 apply plugin: 'android'
 
 dependencies {
+    compile 'com.android.support:support-v4:13.0.+'
     compile files('libs/nineoldandroids-2.4.0.jar')
     compile project (':ActionBarSherlock')
     compile project (':HoloColorPicker')

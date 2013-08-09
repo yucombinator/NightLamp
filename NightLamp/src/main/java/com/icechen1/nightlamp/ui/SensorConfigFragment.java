@@ -77,7 +77,16 @@ public class SensorConfigFragment extends Fragment {
             }
 
         });
-
+        //Load settings for light sensor spinner
+        if(pref.getLightSensorSensitivity().equals("high")){
+            spinnerLightSensor.setSelection(0);
+        }
+        if(pref.getLightSensorSensitivity().equals("normal")){
+            spinnerLightSensor.setSelection(1);
+        }
+        if(pref.getLightSensorSensitivity().equals("low")){
+            spinnerLightSensor.setSelection(2);
+        }
         //ACCELERATIONSENSOR
         CheckBox accelSensorCheckBox = (CheckBox) view.findViewById(R.id.accelSensorCheckBox);
         final Spinner spinnerAccelSensor = (Spinner) view.findViewById(R.id.accelSensorSpinner);
@@ -118,7 +127,16 @@ public class SensorConfigFragment extends Fragment {
             }
 
         });
-
+        //Load settings for accel sensor spinner
+        if(pref.getAccelSensorSensitivity().equals("high")){
+            spinnerAccelSensor.setSelection(0);
+        }
+        if(pref.getAccelSensorSensitivity().equals("normal")){
+            spinnerAccelSensor.setSelection(1);
+        }
+        if(pref.getAccelSensorSensitivity().equals("low")){
+            spinnerAccelSensor.setSelection(2);
+        }
         //MICROPHONE
         CheckBox micSensorCheckBox = (CheckBox) view.findViewById(R.id.voiceCheckBox);
         final EditText micSensorEditText = (EditText) view.findViewById(R.id.voiceRecogEditText);

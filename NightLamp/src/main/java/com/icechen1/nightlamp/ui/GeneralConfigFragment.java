@@ -11,12 +11,15 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.icechen1.nightlamp.AppPreferenceManager;
@@ -142,9 +145,48 @@ public class GeneralConfigFragment extends Fragment {
             dimClockColor = (FrameLayout) view.findViewById(R.id.dimClockColorView);
             dimClockColor.setBackgroundColor(pref.getClockColorDim());
 
+            final String[] clockSizeArray = getResources().getStringArray(R.array.clocksize);
+            final Spinner clockSizeSpinner = (Spinner) view.findViewById(R.id.clockSizeSpinner);
+
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    android.R.layout.simple_spinner_item, clockSizeArray);
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            clockSizeSpinner.setAdapter(dataAdapter);
+            clockSizeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+
+                @Override
+                public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                           int arg2, long arg3) {
+                    if(clockSizeSpinner.getSelectedItem().equals(clockSizeArray[0])){
+                        pref.setClockSize("big");
+                    }
+                    if(clockSizeSpinner.getSelectedItem().equals(clockSizeArray[1])){
+                        pref.setClockSize("normal");
+                    }
+                    if(clockSizeSpinner.getSelectedItem().equals(clockSizeArray[2])){
+                        pref.setClockSize("small");
+                    }
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+            //Load settings for clock
+            if(pref.getClockSize().equals("big")){
+                clockSizeSpinner.setSelection(0);
+            }
+            if(pref.getClockSize().equals("normal")){
+                clockSizeSpinner.setSelection(1);
+            }
+            if(pref.getClockSize().equals("small")){
+                clockSizeSpinner.setSelection(2);
+            }
 
 
-            return view;
+                return view;
         }
 
     public void colorPickerDialog(final int TYPE){

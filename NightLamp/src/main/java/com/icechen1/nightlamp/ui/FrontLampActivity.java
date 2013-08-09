@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.GestureDetector;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -23,7 +26,7 @@ import com.nineoldandroids.animation.ArgbEvaluator;
 import com.nineoldandroids.animation.FloatEvaluator;
 import com.nineoldandroids.animation.ValueAnimator;
 
-public class FrontLampActivity extends FragmentActivity {
+public class FrontLampActivity extends FragmentActivity implements GestureDetector.OnGestureListener {
     private boolean BACKGROUND_DIM = false;
     private ValueAnimator colorAnimation;
     private ValueAnimator brightnessAnimation;
@@ -37,6 +40,8 @@ public class FrontLampActivity extends FragmentActivity {
     public static int DURATION_SHORT = 1000;
     private Handler dimTimer;
     private AppPreferenceManager pref;
+    private float MAX_BRIGHTNESS = 1;
+    private GestureDetector gDetector;
 
     //TODO add notification
     //TODO Change clock color and background
@@ -74,6 +79,17 @@ public class FrontLampActivity extends FragmentActivity {
 
         colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), pref.getClockColorLight(), pref.getClockColorDim());
 
+        int size = 0;
+        //Load clock size settings
+        if(pref.getClockSize().equals("big")){
+            size = 120;
+        }
+        if(pref.getClockSize().equals("normal")){
+            size = 60;
+        }
+        if(pref.getClockSize().equals("small")){
+            size = 40;
+        }
         //This will work also on old devices.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             final TextClock clockView = (TextClock) findViewById(R.id.digitalClock);
@@ -85,6 +101,7 @@ public class FrontLampActivity extends FragmentActivity {
                 }
 
             });
+            clockView.setTextSize(size);
         }else{
             final DigitalClock clockView = (DigitalClock) findViewById(R.id.digitalClock);
 
@@ -96,20 +113,16 @@ public class FrontLampActivity extends FragmentActivity {
                 }
 
             });
+            clockView.setTextSize(size);
         }
         //The part that makes the magic work
-        bkgView.setOnClickListener(new View.OnClickListener() {
+/*        bkgView.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                Log.i(getClass().getName(), "Background dim: " + BACKGROUND_DIM);
 
-                if(BACKGROUND_DIM){
-                    backgroundUp(DURATION_SHORT,false);
-                }else{
-                    backgroundDown(DURATION_SHORT);
-                }
             }
-        });
+        });*/
 
         //Set screen to full brightness
         layoutParams = getWindow().getAttributes();
@@ -118,7 +131,7 @@ public class FrontLampActivity extends FragmentActivity {
 
 
         //Brightness Animation
-        brightnessAnimation = ValueAnimator.ofObject(new FloatEvaluator(), 1, 0);
+        brightnessAnimation = ValueAnimator.ofObject(new FloatEvaluator(), MAX_BRIGHTNESS, 0.01f);
         brightnessAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @Override
@@ -135,7 +148,7 @@ public class FrontLampActivity extends FragmentActivity {
 
         //Start the sensors
         //lampManager = new LampManager(this);
-
+        gDetector = new GestureDetector(this);
     }
 
     Runnable dimRunnable = new Runnable(){
@@ -221,5 +234,85 @@ public class FrontLampActivity extends FragmentActivity {
         lampManager = new LampManager(this);
     }
 
+    @Override
+    public boolean onDown(MotionEvent motionEvent) {
+        return false;
+    }
 
+    @Override
+    public void onShowPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
+        Log.i(getClass().getName(), "Background dim: " + BACKGROUND_DIM);
+        //Update the animator
+        //Brightness Animation
+        brightnessAnimation = ValueAnimator.ofObject(new FloatEvaluator(), MAX_BRIGHTNESS, 0);
+        brightnessAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+            @Override
+            public void onAnimationUpdate(ValueAnimator animator) {
+                //Change brightness
+                //float BackLightValue = (float)arg1/100;
+                layoutParams = getWindow().getAttributes();
+                layoutParams.screenBrightness = (Float)animator.getAnimatedValue();
+                //Log.d(getClass().getName(), (animator.getAnimatedValue()).toString());
+                getWindow().setAttributes(layoutParams);
+            }
+
+        });
+
+        if(BACKGROUND_DIM){
+            backgroundUp(DURATION_SHORT,false);
+        }else{
+            backgroundDown(DURATION_SHORT);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float v, float v2) {
+        layoutParams = getWindow().getAttributes();
+        Log.i(getClass().getName(), e2.getX()+ " " +e1.getX() + " " + e2.getY()+ " " +e1.getY());
+
+        double dy = e2.getY()-e1.getY();
+        double dx = e2.getX()-e1.getX();
+        if(dx > 0){
+            //Downward Swipe
+            layoutParams.screenBrightness = (float) (MAX_BRIGHTNESS - Math.sqrt(Math.pow(dy,2)+Math.pow(dx,2))/10000);
+        }else{
+            //Upward Swipe
+            layoutParams.screenBrightness = (float) (MAX_BRIGHTNESS + Math.sqrt(Math.pow(dy,2)+Math.pow(dx,2))/10000);
+        }
+        if(layoutParams.screenBrightness > 1f){
+            layoutParams.screenBrightness = 1f;
+        }
+
+        if(layoutParams.screenBrightness < 0f){
+            layoutParams.screenBrightness = 0.01f;
+        }
+        MAX_BRIGHTNESS = layoutParams.screenBrightness;
+        //Log.d(getClass().getName(), (animator.getAnimatedValue()).toString());
+        Log.i(getClass().getName(), "Background brightness: " + layoutParams.screenBrightness);
+
+        getWindow().setAttributes(layoutParams);
+        return true;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float v, float v2) {
+
+        return false;
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent me) {
+        return gDetector.onTouchEvent(me);
+    }
 }
